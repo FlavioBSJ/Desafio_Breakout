@@ -47,6 +47,8 @@ public class BallBehaviour : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D colisao) 
     {
+
+        GetComponent<AudioSource>().Play();
         if(colisao.gameObject.name == "Plataforma")
         {
             float ps = hitAngulation(transform.position, colisao.transform.position,colisao.collider.bounds.size.x);
