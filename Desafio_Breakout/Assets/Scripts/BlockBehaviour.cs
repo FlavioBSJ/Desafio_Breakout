@@ -7,6 +7,8 @@ public class BlockBehaviour : MonoBehaviour
 
     public AudioClip[] audioSources;
     public GameObject cam;
+
+    public GameObject Laser;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,11 @@ public class BlockBehaviour : MonoBehaviour
         {
            AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip, new Vector3(0, 0, 0));
            cam.GetComponent<Animator>().SetTrigger("Shake");
+           if((Random.Range(0,100) <= 5))
+           {
+               Instantiate(Laser);
+               Laser.transform.position = this.transform.position;
+           }
            Destroy(this.gameObject);
            
         }
